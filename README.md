@@ -29,6 +29,7 @@ On Windows -> python manage.py startapp my_app
 ```
 3. Every after change models.py you need to make migrations into MongoDB (database) to create the table for the new model
 ```
+pip install djongo
 python manage.py makemigrations
 python manage.py migrate
 ```
