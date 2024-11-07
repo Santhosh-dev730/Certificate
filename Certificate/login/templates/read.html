@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Data from Database</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+</head>
+<style>
+     body {
+            background: linear-gradient(135deg, #ccc5d4 0%, #2575fc 100%);
+            min-height: 150vh;
+            font-family: Arial, sans-serif;
+        }
+</style>
+<body>
+    <div class="container is-fluid mt-5">
+        <h2 class="is-size-3 has-text-centered has-text-weight-bold">Student Applied for Certificate</h2>
+       <table class="table is-bordered is-striped is-hoverable is-fullwidth mt-5">
+        <thead>
+            <tr>
+                <th>Register No</th>
+                <th>Name</th>
+                <th>Email ID</th>
+                <th>Course</th>
+                <th>Trainee Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+            {% for data in datas %}
+            <tbody>
+                <tr>
+                    <td>{{data.reg_no}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.course}}</td>
+                    <td>{{data.trainer}}</td>
+                    <td>
+                            <a class="button is-info" href="{% url 'update' data.mongo_id %}">
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </span>
+                            </a>
+                            <a class="button is-danger" href="{% url 'delete' data.mongo_id %}">
+                                <span class="icon is-small">
+                                    <i class="fa-solid fa-trash"></i>
+                                </span>
+                            </a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+       </table>
+    </div>
+</div>
+</body>
+</html>
